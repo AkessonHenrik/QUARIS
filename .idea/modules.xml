@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KUANAY.iml" filepath="$PROJECT_DIR$/.idea/KUANAY.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/WildflyApp/WildflyApp.iml" filepath="$PROJECT_DIR$/app/WildflyApp/WildflyApp.iml" />
     </modules>
   </component>
 </project>

@@ -1,9 +1,7 @@
 version: '2'
 services:
   wildfly:
-    build: 
-      context: ./images/wildfly
-      dockerfile: -f
+    build: ./images/wildfly
     ports:
       - "9090:8080"
       - "9990:9990"
