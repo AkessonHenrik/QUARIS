@@ -15,15 +15,13 @@ import java.io.IOException;
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/Register"})
 public class RegisterServlet extends HttpServlet {
     UserManager userManager = new UserManager();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         userManager.addUser(request.getParameter("username"), request.getParameter("password"), request.getSession());
         request.getRequestDispatcher("/WEB-INF/pages/LoggedIn.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(userManager.isLogged(request.getSession()))
-            request.getRequestDispatcher("/").forward(request, response);
-        else
-            request.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(request, response);
     }
 }

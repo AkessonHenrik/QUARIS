@@ -13,8 +13,8 @@ public class UserManager {
     private static LinkedList<User> users = new LinkedList<>();
 
     public boolean checkUser(String username, String password, HttpSession sessionId) {
-        for(User u : users) {
-            if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+        for (User u : users) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 u.setSessionId(sessionId);
                 return true;
             }
@@ -23,37 +23,38 @@ public class UserManager {
     }
 
     public boolean compareSessions(HttpSession session) {
-        for(User u : users) {
+        for (User u : users) {
             try {
                 if (u.getSessionId().equals(session))
                     return true;
-            } catch(NullPointerException npe) {
-//                return false;
+            } catch (NullPointerException npe) {
             }
         }
         return false;
     }
+
     public boolean isLogged(HttpSession session) {
-        if(users.isEmpty())
+        if (users.isEmpty())
             return false;
-        for(User u : users) {
+        for (User u : users) {
             try {
                 if (u.getSessionId().equals(session))
                     return true;
-            }catch(NullPointerException npe) {
+            } catch (NullPointerException npe) {
 
             }
         }
         return false;
     }
+
     public void logout(HttpSession session) {
-        for(User u : users) {
+        for (User u : users) {
             try {
                 if (u.getSessionId().equals(session)) {
                     u.setSessionId(null);
                     System.out.println("Logged " + u.getUsername() + " out");
                 }
-            } catch(NullPointerException npe) {
+            } catch (NullPointerException npe) {
                 System.out.println("Wasn't logged in");
             }
         }

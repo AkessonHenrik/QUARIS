@@ -12,16 +12,17 @@ import java.io.IOException;
 /**
  * Created by Henrik on 28.09.2016.
  */
-@WebServlet(name = "LogoutServlet", urlPatterns={"/Logout"})
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/Logout"})
 public class LogoutServlet extends HttpServlet {
     UserManager userManager = new UserManager();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("in logout, user is " + request.getSession());
-        if(userManager.isLogged(request.getSession())) {
+        if (userManager.isLogged(request.getSession())) {
             System.out.println("User is logged, logging out");
             userManager.logout(request.getSession());
         }

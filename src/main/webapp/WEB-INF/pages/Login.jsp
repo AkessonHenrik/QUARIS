@@ -6,11 +6,11 @@
     <link rel="stylesheet" src="../../css/style.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="Submit">
-    </form>
+<h1>Login</h1>
+<form method="post">
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

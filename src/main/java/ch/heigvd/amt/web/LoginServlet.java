@@ -28,11 +28,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (userManager.isLogged(request.getSession()) == false) {
-            request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
-        } else {
-            System.out.println("user is already logged in");
-            request.getRequestDispatcher("/").forward(request, response);
-        }
+        request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
     }
 }
