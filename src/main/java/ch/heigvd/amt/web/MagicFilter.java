@@ -13,7 +13,7 @@ public class MagicFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        
+        System.out.println("In filter");
         chain.doFilter(req, resp);
     }
 

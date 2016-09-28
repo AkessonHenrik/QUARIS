@@ -28,7 +28,7 @@ public class UserManager {
                 if (u.getSessionId().equals(session))
                     return true;
             } catch(NullPointerException npe) {
-                return false;
+//                return false;
             }
         }
         return false;
