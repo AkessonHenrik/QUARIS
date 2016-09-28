@@ -11,6 +11,6 @@
     <title>Protected</title>
 </head>
 <body>
-    <h1>Only logged in users should be able to see this!</h1>
+    <h1>This page is protected and only logged in users can see this</h1>
 </body>
 </html>

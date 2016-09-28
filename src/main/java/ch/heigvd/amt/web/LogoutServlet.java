@@ -20,7 +20,11 @@ public class LogoutServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userManager.logout(request.getSession());
+        System.out.println("in logout, user is " + request.getSession());
+        if(userManager.isLogged(request.getSession())) {
+            System.out.println("User is logged, logging out");
+            userManager.logout(request.getSession());
+        }
         request.getRequestDispatcher("").forward(request, response);
     }
 }

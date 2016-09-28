@@ -13,7 +13,6 @@ public class UserManager {
     private static LinkedList<User> users = new LinkedList<>();
 
     public boolean checkUser(String username, String password, HttpSession sessionId) {
-        users.add(new User("adad", "adad", null));
         for(User u : users) {
             if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 u.setSessionId(sessionId);
@@ -34,11 +33,29 @@ public class UserManager {
         }
         return false;
     }
+    public boolean isLogged(HttpSession session) {
+        if(users.isEmpty())
+            return false;
+        for(User u : users) {
+            try {
+                if (u.getSessionId().equals(session))
+                    return true;
+            }catch(NullPointerException npe) {
 
+            }
+        }
+        return false;
+    }
     public void logout(HttpSession session) {
         for(User u : users) {
-            if(u.getSessionId().equals(session))
-                u.setSessionId(null);
+            try {
+                if (u.getSessionId().equals(session)) {
+                    u.setSessionId(null);
+                    System.out.println("Logged " + u.getUsername() + " out");
+                }
+            } catch(NullPointerException npe) {
+                System.out.println("Wasn't logged in");
+            }
         }
     }
 
