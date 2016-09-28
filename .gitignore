@@ -1,3 +1,6 @@
 /app/WildflyApp/target/
 .idea/
 .idea/workspace.xml
+/target
+target/
+/target/
