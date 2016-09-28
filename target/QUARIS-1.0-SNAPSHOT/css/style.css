@@ -3,6 +3,20 @@ body, html {
 	color: #fff;
 	background: none;
 }
+.button {
+    font-family: 'Raleway', sans-serif;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: transparent;
+    border: 10px white;
+    color: white;
+    font-size: 30px;
+}
+.button:hover {
+    border-color: white;
+    transition: .4s;
+}
 .full {
 	background: url(../img/background2.png) no-repeat center center fixed;
 	-webkit-background-size: cover;
