@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/Quaris/Quaris.iml" filepath="$PROJECT_DIR$/app/Quaris/Quaris.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QUARIS.iml" filepath="$PROJECT_DIR$/QUARIS.iml" />
     </modules>
   </component>
 </project>

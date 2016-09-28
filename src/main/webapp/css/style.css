@@ -1,0 +1,51 @@
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	color: #fff;
+	background: none;
+}
+.full {
+	background: url(../img/background2.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.quaris {
+	font-family: 'Raleway', sans-serif;
+    font-size: 11vw;
+	text-transform: uppercase;
+}
+a, a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.coming-soon {
+	text-align: center;
+	padding-top: 130px;
+	margin: 0 auto;
+}
+.coming-soon h2 {
+	font-size: 40px;
+	font-weight: 300;
+	line-height: 1.4em;
+	padding: 30px 0 100px 0;
+}
+.coming-soon .counter {
+	margin: 0 0 60px 0;
+}
+.copyright {
+	position: absolute;
+	bottom: 12px;
+	width: 100%;
+	font-size: 14px;
+	margin: 20px 0 10px 0;
+	color: rgba(255,255,255,0.7)
+}
+
+img {
+	max-width:100%;
+	align: center;
+}
+
+@media (max-width: 979px) {
+}
