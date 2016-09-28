@@ -13,16 +13,18 @@ import java.io.PrintWriter;
 /**
  * Created by Henrik on 28.09.2016.
  */
+
+//This servlet takes care of the login
 @WebServlet(name = "LoginServlet", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
     UserManager userManager = new UserManager();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //Checking if the user is registered, can't log in a user that doesn't exist
         if (userManager.checkUser(request.getParameter("username"), request.getParameter("password"), request.getSession())) {
-            System.out.println(request.getParameter("username") + " is logged in");
             request.getRequestDispatcher("/WEB-INF/pages/LoggedIn.jsp").forward(request, response);
         } else {
-            System.out.println("No user called " + request.getParameter("username"));
             request.getRequestDispatcher("/WEB-INF/pages/InvalidLogin.jsp").forward(request, response);
         }
     }

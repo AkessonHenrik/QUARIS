@@ -14,16 +14,13 @@ import java.io.IOException;
  */
 @WebServlet(name = "ProtectedServlet", urlPatterns = {"/Protected"})
 public class ProtectedServlet extends HttpServlet {
-    UserManager userManager = new UserManager();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (userManager.compareSessions(request.getSession()))
-            request.getRequestDispatcher("/WEB-INF/pages/ProtectedPage.jsp").forward(request, response);
-        else
-            request.getRequestDispatcher("WEB-INF/pages/NotAllowed.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/ProtectedPage.jsp").forward(request, response);
     }
 }
