@@ -1,11 +1,7 @@
 package ch.heigvd.amt.model;
 
 import javax.servlet.http.HttpSession;
-import java.util.LinkedList;
 
-/**
- * Created by Henrik on 28.09.2016.
- */
 public class User {
     private String username, password;
     private HttpSession sessionId;
@@ -27,6 +23,7 @@ public class User {
     public HttpSession getSessionId() {
         return sessionId;
     }
+
     public void setSessionId(HttpSession sessionId) {
         this.sessionId = sessionId;
     }

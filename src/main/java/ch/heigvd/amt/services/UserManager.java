@@ -5,19 +5,15 @@ import ch.heigvd.amt.model.User;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 
-/**
- * Created by Henrik on 28.09.2016.
- */
-
-//Stores all users
+// Stores all users
 public class UserManager {
 
-    //Users are kept here
+    // Users are kept here
     private static LinkedList<User> users = new LinkedList<>();
 
-    //Checks if the user whose username and password are given is in the registered users list
-    //If so, updates the user's session id
-    //If not, returns false
+    // Checks if the user whose username and password are given is in the registered users list
+    // If so, updates the user's session id
+    // If not, returns false
     public boolean checkUser(String username, String password, HttpSession sessionId) {
         for (User u : users) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
@@ -28,7 +24,7 @@ public class UserManager {
         return false;
     }
 
-    //Compares the parameter sessionId with all registered user's session id
+    // Compares the parameter sessionId with all registered user's session id
     public boolean compareSessions(HttpSession session) {
         for (User u : users) {
             try {
@@ -41,7 +37,7 @@ public class UserManager {
     }
 
 
-    //Checks if the parameter session is registered to a user
+    // Checks if the parameter session is registered to a user
     public boolean isLogged(HttpSession session) {
         if (users.isEmpty())
             return false;
@@ -56,7 +52,7 @@ public class UserManager {
         return false;
     }
 
-    //Sets to null the sessionId of the user associated with the parameter sessionId
+    // Sets to null the sessionId of the user associated with the parameter sessionId
     public void logout(HttpSession session) {
         for (User u : users) {
             try {
@@ -70,7 +66,7 @@ public class UserManager {
         }
     }
 
-    //Adds a user to the list
+    // Adds a user to the list
     public void addUser(String username, String password, HttpSession sessionId) {
         users.add(new User(username, password, sessionId));
     }

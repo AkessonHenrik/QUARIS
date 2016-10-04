@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by Henrik on 28.09.2016.
- */
-
-//This servlet takes care of the login
-@WebServlet(name = "LoginServlet", urlPatterns = {"/Login"})
+// This servlet takes care of the login
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
     UserManager userManager = new UserManager();
 

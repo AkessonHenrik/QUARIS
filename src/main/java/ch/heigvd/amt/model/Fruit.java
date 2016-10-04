@@ -1,9 +1,6 @@
 package ch.heigvd.amt.model;
 
-/**
- * Created by Henrik on 28.09.2016.
- */
-//Model
+// Model
 public class Fruit {
     private String name;
     private String color;

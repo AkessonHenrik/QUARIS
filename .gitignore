@@ -2,5 +2,11 @@
 .idea/
 .idea/workspace.xml
 /target
-target/
+target/*
 /target/
+
+# OS
+*~
+.DS_Store
+.war
+.zip
