@@ -19,7 +19,7 @@ public class AuthentificationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
 
         // If the requested url contains "Login" or "Register", we have to make sure a logged in user cannot access these pages
-        if (request.getRequestURL().toString().contains("login") || request.getRequestURL().toString().contains("legister")) {
+        if (request.getRequestURL().toString().contains("login") || request.getRequestURL().toString().contains("register")) {
             if (userManager.isLogged(request.getSession())) {
                 // cannot login or register again
                 request.getRequestDispatcher("/").forward(request, resp);
