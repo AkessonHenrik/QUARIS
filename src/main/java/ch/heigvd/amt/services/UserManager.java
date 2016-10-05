@@ -2,10 +2,12 @@ package ch.heigvd.amt.services;
 
 import ch.heigvd.amt.model.User;
 
+import javax.ejb.Local;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 
 // Stores all users
+@Local
 public class UserManager {
 
     // Users are kept here

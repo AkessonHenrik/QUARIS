@@ -1,4 +1,4 @@
-package ch.heigvd.amt.web;
+package ch.heigvd.amt.web.filters;
 
 import ch.heigvd.amt.services.UserManager;
 

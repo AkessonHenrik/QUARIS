@@ -27,4 +27,9 @@ public class User {
     public void setSessionId(HttpSession sessionId) {
         this.sessionId = sessionId;
     }
+
+    @Override
+    public String toString() {
+        return "User{username: " + username + ", password: " + password + "}";
+    }
 }
