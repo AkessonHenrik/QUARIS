@@ -24,7 +24,7 @@ public class AuthentificationFilter implements Filter {
                 // cannot login or register again
                 request.getRequestDispatcher("/").forward(request, resp);
                 return;
-            }rc
+            }
 
         // If the requested URL contains "Logout", we have to make sure the client is logged in to access that page
         } else if (request.getRequestURL().toString().contains("logout")) {
