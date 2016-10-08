@@ -1,6 +1,5 @@
-package ch.heigvd.amt.web;
+package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.services.UserManager;
 import ch.heigvd.amt.services.UserManagerLocal;
 
 import javax.ejb.EJB;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
+public class RegisterServlet extends HttpServlet {
 
     @EJB
     private UserManagerLocal userManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        userManager.addUser(request.getParameter("username"), request.getParameter("password"), request.getSession());
+//        request.setAttribute("isLogged", userManager.isLogged(request.getSession()));
+        request.getRequestDispatcher("/WEB-INF/pages/LoggedIn.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (userManager.isLogged(request.getSession())) {
-            userManager.logout(request.getSession());
-        }
-        request.getRequestDispatcher("/index").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(request, response);
     }
 }
