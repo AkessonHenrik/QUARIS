@@ -3,12 +3,11 @@ package ch.heigvd.amt.services;
 import ch.heigvd.amt.model.User;
 
 import javax.ejb.Singleton;
-import javax.ejb.Stateless;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 
 // Stores all users
-@Stateless
+@Singleton
 public class UserManager implements UserManagerLocal {
 
     // Users are kept here

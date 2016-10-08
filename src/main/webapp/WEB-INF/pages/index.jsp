@@ -1,20 +1,22 @@
-<%@include file="include/header.jsp" %>
+<%@include file="include/head.jsp" %>
 
-<body>
+<%@include file="include/navbar.jsp" %>
+
 <div class="coming-soon">
     <div class="container">
         <h1 class="title">Quaris</h1>
-        
-        <a href="/QUARIS-1.0-SNAPSHOT/login" class="btn btn-lg btn-outline-secondary">Login</a>
-        <a href="/QUARIS-1.0-SNAPSHOT/register" class="btn btn-lg btn-outline-secondary">Register</a>
-        <br>
-        <br>
-        <a href="/QUARIS-1.0-SNAPSHOT/protected" class="btn btn-lg btn-outline-secondary">Go to protected page</a>
-        <br>
-        <br>
-        <a href="/QUARIS-1.0-SNAPSHOT/logout" class="btn btn-lg btn-outline-secondary">Log out</a>
+
+        <c:if test='${!isLogged}'>
+            <a href="${pageContext.request.contextPath}/login" class="btn btn-lg btn-primary">Login</a>
+            <a href="${pageContext.request.contextPath}/register" class="btn btn-lg btn-success">Register</a>
+        </c:if>
+
+        <c:if test='${isLogged}'>
+            <a href="${pageContext.request.contextPath}/protected" class="btn btn-lg btn-primary">Go to protected page</a>
+            <a href="${pageContext.request.contextPath}/logout" class="btn btn-lg btn-secondary">Log out</a>
+        </c:if>
     </div>
     <div class="copyright">A multi-tier application project by Henrik & Fabien</div>
 </div>
-</body>
-</html>
+
+<%@include file="include/footer.jsp" %>

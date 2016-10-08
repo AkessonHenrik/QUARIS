@@ -25,6 +25,6 @@ public class LogoutServlet extends HttpServlet {
         if (userManager.isLogged(request.getSession())) {
             userManager.logout(request.getSession());
         }
-        request.getRequestDispatcher("").forward(request, response);
+        request.getRequestDispatcher("/index").forward(request, response);
     }
 }

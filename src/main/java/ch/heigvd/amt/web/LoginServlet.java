@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 // This servlet takes care of the login
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
+
     @EJB
     private UserManagerLocal userManager;
 

@@ -1,5 +1,8 @@
 package ch.heigvd.amt.web;
 
+import ch.heigvd.amt.services.UserManagerLocal;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +18,7 @@ public class ProtectedServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("isLogged", true);
         request.getRequestDispatcher("/WEB-INF/pages/ProtectedPage.jsp").forward(request, response);
     }
 }

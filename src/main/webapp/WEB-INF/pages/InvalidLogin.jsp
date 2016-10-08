@@ -1,10 +1,11 @@
-<%@include file="include/header.jsp" %>
+<%@include file="include/head.jsp" %>
 
-<body>
+<%@include file="include/navbar.jsp" %>
+
 <div class="coming-soon">
     <div class="container">
         <h2 class="title">It appears you aren't registered</h2><br>
-        <a class="button" href="${pageContext.request.contextPath}/register">Register here</a></div>
+        <a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/register">Register here</a></div>
 </div>
-</body>
-</html>
+
+<%@include file="include/footer.jsp" %>
