@@ -1,5 +1,7 @@
 package ch.heigvd.amt.services;
 
+import ch.heigvd.amt.model.User;
+
 import javax.ejb.Local;
 import javax.servlet.http.HttpSession;
 
@@ -12,4 +14,6 @@ public interface UserManagerLocal {
     void logout(HttpSession session);
 
     void addUser(String username, String password, HttpSession session);
+
+    User getUserbyName(String username);
 }

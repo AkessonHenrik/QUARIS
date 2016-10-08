@@ -72,4 +72,20 @@ public class UserManager implements UserManagerLocal {
     public void addUser(String username, String password, HttpSession sessionId) {
         users.add(new User(username, password, sessionId));
     }
+
+    public User getUserbyName(String name) {
+        return users.stream().filter(u -> u.getUsername().equals(name)).findFirst().orElse(null);
+
+//        for (User u : users) {
+//            if (u.getUsername().equals(name)) {
+//                return u;
+//            }
+//        }
+//
+//        return null;
+    }
+
+//    public User getUserbyId(long id) {
+
+//    }
 }
