@@ -1,7 +1,9 @@
 package ch.heigvd.amt.web;
 
 import ch.heigvd.amt.services.UserManager;
+import ch.heigvd.amt.services.UserManagerLocal;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,9 @@ import java.io.IOException;
 
 @WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {
-    UserManager userManager = new UserManager();
+
+    @EJB
+    private UserManagerLocal userManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
