@@ -2,7 +2,7 @@
 
 <%@include file="include/navbar.jsp" %>
 
-<div class="coming-soon">
+<div class="coming-soon full">
     <div class="container">
         <h1 class="title">Quaris</h1>
 
