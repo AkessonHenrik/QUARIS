@@ -1,4 +1,4 @@
-package ch.heigvd.amt.model;
+package ch.heigvd.amt.models;
 
 import javax.servlet.http.HttpSession;
 

@@ -1,11 +1,12 @@
 package ch.heigvd.amt.api.resources;
 
-import ch.heigvd.amt.model.User;
-import ch.heigvd.amt.services.UserManager;
+import ch.heigvd.amt.api.dto.UserDTO;
+import ch.heigvd.amt.models.User;
 import ch.heigvd.amt.services.UserManagerLocal;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -22,41 +23,39 @@ public class UserResource extends APIResource {
     private HttpServletResponse response;
 
     @Context
+    private HttpServletRequest request;
+
+    @Context
     private UriInfo uriInfo;
+
+    @GET
+    @Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUser() {
+        return "test ok";
+    }
 
     @GET
     @Path("/{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getUser(
+    public UserDTO getUser(
             @PathParam(value="username") String username
     ) {
         // TODO use a serializer
         System.out.println(username);
-        return userManager.getUserbyName(username).toString();
-//        return "Get a user with /users/{userId}";
+        return new UserDTO(userManager.getUserbyName(username));
     }
-
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String getUsers() {
-//        return "Get a user with /users/{userId}";
-//    }
-
-
-//    @GET
-//    @Path("/{userId}/id")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String getUser(
-//            @PathParam(value="userId") Long userId
-//    ) {
-////        userManager.getUserbyName()
-//        return "Get a user with /users/{userId}";
-//    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String addUser(User user) {
-        return "add new user";
+    public UserDTO addUser(
+            UserDTO user
+    ) {
+        userManager.addUser(user.getUsername(), user.getPassword(), request.getSession());
+
+        response.setStatus(201);
+        return user;
+//        return "{\"status\": \"ok\"}";
     }
 }

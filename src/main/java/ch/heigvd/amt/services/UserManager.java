@@ -1,6 +1,6 @@
 package ch.heigvd.amt.services;
 
-import ch.heigvd.amt.model.User;
+import ch.heigvd.amt.models.User;
 
 import javax.ejb.Singleton;
 import javax.servlet.http.HttpSession;
@@ -71,6 +71,10 @@ public class UserManager implements UserManagerLocal {
     // Adds a user to the list
     public void addUser(String username, String password, HttpSession sessionId) {
         users.add(new User(username, password, sessionId));
+    }
+
+    public void addUser(User user) {
+        users.add(user);
     }
 
     public User getUserbyName(String name) {

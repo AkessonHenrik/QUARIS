@@ -1,7 +1,5 @@
 package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.model.User;
-import ch.heigvd.amt.services.UserManager;
 import ch.heigvd.amt.services.UserManagerLocal;
 
 import javax.ejb.EJB;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 // This servlet takes care of the login
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
