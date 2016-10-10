@@ -9,7 +9,7 @@
             <input class="form-control-lg" type="text" name="username" placeholder="Username"><br>
             <input class="form-control-lg" type="password" name="password" placeholder="password"><br>
             <input class="btn btn-lg btn-primary" type="submit" value="Submit">
-            <a class="btn btn-lg btn-outline-secondary" href="${pageContext.request.contextPath}/index">Go home</a>
+            <a class="btn btn-lg btn-outline-secondary" href="${pageContext.request.contextPath}">Go home</a>
         </form>
     </div>
 </div>

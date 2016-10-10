@@ -13,7 +13,7 @@
         <input type="password" name="username" id="inputPassword" class="form-control" placeholder="Password" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a href="${pageContext.request.contextPath}/index" class="btn btn-secondary btn-block" type="submit">Go home</a>
+        <a href="${pageContext.request.contextPath}" class="btn btn-secondary btn-block" type="submit">Go home</a>
     </form>
 
 </div>

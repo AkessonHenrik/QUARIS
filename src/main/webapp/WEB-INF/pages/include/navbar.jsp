@@ -3,7 +3,7 @@
     <c:if test='${isLogged}'>
         <ul class="nav navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/protected">Go to protected page</a>
@@ -22,4 +22,3 @@
         </c:if>
     </form>
 </nav>
-
