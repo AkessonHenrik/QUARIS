@@ -4,6 +4,7 @@ import ch.heigvd.amt.models.User;
 
 import javax.ejb.Local;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Local
 public interface UserManagerLocal {
@@ -18,4 +19,8 @@ public interface UserManagerLocal {
     void addUser(User user);
 
     User getUserbyName(String username);
+
+    boolean exists(String username);
+
+    List<User> getAll();
 }

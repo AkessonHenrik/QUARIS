@@ -5,6 +5,7 @@ import ch.heigvd.amt.models.User;
 import javax.ejb.Singleton;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
+import java.util.List;
 
 // Stores all users
 @Singleton
@@ -75,6 +76,14 @@ public class UserManager implements UserManagerLocal {
 
     public void addUser(User user) {
         users.add(user);
+    }
+
+    public boolean exists(String username) {
+        return users.stream().anyMatch(u -> u.getUsername().equals(username));
+    }
+
+    public List<User> getAll() {
+        return users;
     }
 
     public User getUserbyName(String name) {
