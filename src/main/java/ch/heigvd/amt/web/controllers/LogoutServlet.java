@@ -1,6 +1,5 @@
 package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.services.UserManager;
 import ch.heigvd.amt.services.UserManagerLocal;
 
 import javax.ejb.EJB;
@@ -25,6 +24,6 @@ public class LogoutServlet extends HttpServlet {
         if (userManager.isLogged(request.getSession())) {
             userManager.logout(request.getSession());
         }
-        request.getRequestDispatcher("/index").forward(request, response);
+        request.getRequestDispatcher("").forward(request, response);
     }
 }
