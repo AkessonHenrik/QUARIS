@@ -1,11 +1,13 @@
 body, html {
 	font-family: 'Open Sans', sans-serif;
 	background: none;
+	min-height: 100%;
 	height: 100%;
+	background: #f8f8f8;
 }
 
 .btn:hover {
-    transition: .4s;
+    transition: .3s;
 }
 .full {
 	height: 100%;
@@ -38,9 +40,6 @@ a, a:hover {
 	line-height: 1.4em;
 	padding: 30px 0 100px 0;
 }
-.coming-soon .counter {
-	margin: 0 0 60px 0;
-}
 .copyright {
 	position: absolute;
 	bottom: 12px;
@@ -55,38 +54,31 @@ a, a:hover {
 	padding: 15px;
 	margin: 0 auto;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-	margin-bottom: 10px;
-}
-.form-signin .checkbox {
-	font-weight: normal;
-}
-.form-signin .form-control {
-	position: relative;
-	height: auto;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 10px;
-	font-size: 16px;
-}
-.form-signin .form-control:focus {
-	z-index: 2;
-}
-.form-signin input[type="email"] {
-	margin-bottom: -1px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-	margin-bottom: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
+
+.wrapper {
+	height: 100%;
+	padding-top: 75px;
 }
 
+.wrapper h1, .wrapper h2 {
+	font-width: 300;
+	color: #505050;
+}
+
+.content {
+	background: #fff;
+	padding: 1.25rem;
+	margin-bottom: 2rem;
+	border: 2px solid #f4f4f4;
+	border-radius: 3px;
+}
+
+.bg-faded {
+	background: #fff;
+}
 
 img {
-	max-width:100%;
+	max-width: 100%;
 	align: center;
 }
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
     <a class="navbar-brand" href="#">QUARIS</a>
     <c:if test='${isLogged}'>
         <ul class="nav navbar-nav">
