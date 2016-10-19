@@ -20,7 +20,6 @@ public class UserManager implements UserManagerLocal {
 
     protected Connection connection;
 
-
     // Users are kept here
     private static LinkedList<User> users = new LinkedList<>();
 
@@ -79,44 +78,23 @@ public class UserManager implements UserManagerLocal {
         }
     }
 
-    // Adds a user to the list
-    public boolean addUser(String email, String username, String password, HttpSession sessionId) {
-        return users.add(new User(email, username, password, sessionId));
-    }
-
-    public boolean addUser(User user) {
-        boolean result = false;
-
-        try {
-            Connection conn = dataSource.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(
-                    "INSERT INTO user (email, username, password) VALUES (?,?,?)");
-
-            pstmt.setString(1, user.getEmail());
-            pstmt.setString(2, user.getUsername());
-            pstmt.setString(3, user.getPassword());
-
-            result = pstmt.execute();
-
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return result;
-
-    }
-
+    /**
+     * Check if the given user exists
+     * @param username
+     * @return If the user exists
+     */
     public boolean exists(String username) {
         try {
             connection = dataSource.getConnection();
 
-            PreparedStatement pstmt = connection.prepareStatement("SELECT COUNT(1) as 'res' FROM users WHERE username = ?");
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT COUNT(1) as 'res' FROM users WHERE username = ?");
             pstmt.setString(1, username);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                // If COUNT is "1", user exists
                 return rs.getString("res").equals("1");
             }
         } catch (SQLException e) {
@@ -126,6 +104,10 @@ public class UserManager implements UserManagerLocal {
         return false;
     }
 
+    /**
+     * Get all users
+     * @return List of all users
+     */
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         PreparedStatement pstmt;
@@ -147,7 +129,7 @@ public class UserManager implements UserManagerLocal {
         return users;
     }
 
-    public User getUserbyName(String username) {
+    public User getUserByUsername(String username) {
         try {
             Connection conn = dataSource.getConnection();
 
@@ -172,4 +154,26 @@ public class UserManager implements UserManagerLocal {
         return null;
     }
 
+    // Adds a user to the list
+    public boolean addUser(User user) {
+        boolean result = false;
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(
+                    "INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
+
+            pstmt.setString(1, user.getEmail());
+            pstmt.setString(2, user.getUsername());
+            pstmt.setString(3, user.getPassword());
+
+            result = pstmt.executeUpdate() == 1;
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

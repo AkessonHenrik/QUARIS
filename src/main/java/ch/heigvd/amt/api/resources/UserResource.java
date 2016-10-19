@@ -1,6 +1,7 @@
 package ch.heigvd.amt.api.resources;
 
 import ch.heigvd.amt.api.dto.UserDTO;
+import ch.heigvd.amt.models.User;
 import ch.heigvd.amt.services.dao.UserManagerLocal;
 
 import javax.ejb.EJB;
@@ -48,7 +49,7 @@ public class UserResource extends APIResource {
             @PathParam(value="username") String username
     ) {
         if (userManager.exists(username)) {
-            return Response.ok(new UserDTO(userManager.getUserbyName(username))).build();
+            return Response.ok(new UserDTO(userManager.getUserByUsername(username))).build();
         }
 
         return Response.status(Response.Status.NOT_FOUND).build();
@@ -60,8 +61,7 @@ public class UserResource extends APIResource {
     public Response addUser(
             UserDTO user
     ) {
-
-        if (userManager.addUser(user.getEmail(), user.getUsername(), user.getPassword(), request.getSession())) {
+        if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword(), null))) {
             return Response.ok(user).status(Response.Status.CREATED).build();
         }
 

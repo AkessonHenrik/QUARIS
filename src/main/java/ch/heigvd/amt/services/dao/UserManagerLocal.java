@@ -15,11 +15,9 @@ public interface UserManagerLocal {
 
     void logout(HttpSession session);
 
-    boolean addUser(String email, String username, String password, HttpSession session);
-
     boolean addUser(User user);
 
-    User getUserbyName(String username);
+    User getUserByUsername(String username);
 
     boolean exists(String username);
 
