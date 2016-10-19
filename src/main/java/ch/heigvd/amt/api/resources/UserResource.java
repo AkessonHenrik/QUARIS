@@ -1,7 +1,7 @@
 package ch.heigvd.amt.api.resources;
 
 import ch.heigvd.amt.api.dto.UserDTO;
-import ch.heigvd.amt.services.UserManagerLocal;
+import ch.heigvd.amt.services.dao.UserManagerLocal;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -11,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.sql.SQLException;
 
 @Stateless
 @Path("/users")
@@ -31,7 +32,13 @@ public class UserResource extends APIResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUser(
     ) {
-        return Response.ok(userManager.getAll().stream().map(u -> new UserDTO(u)).toArray()).build();
+        try {
+            return Response.ok(userManager.getAll().stream().map(u -> new UserDTO(u)).toArray()).build();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Response.serverError().build();
     }
 
     @GET
@@ -53,11 +60,13 @@ public class UserResource extends APIResource {
     public Response addUser(
             UserDTO user
     ) {
-        userManager.addUser(user.getUsername(), user.getPassword(), request.getSession());
 
+        if (userManager.addUser(user.getEmail(), user.getUsername(), user.getPassword(), request.getSession())) {
+            return Response.ok(user).status(Response.Status.CREATED).build();
+        }
+
+        return Response.serverError().build();
 
 //        return "{\"status\": \"ok\"}";
-
-        return Response.ok(user).status(Response.Status.CREATED).build();
     }
 }

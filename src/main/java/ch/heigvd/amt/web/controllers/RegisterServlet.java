@@ -1,6 +1,6 @@
 package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.services.UserManagerLocal;
+import ch.heigvd.amt.services.dao.UserManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,8 +17,8 @@ public class RegisterServlet extends HttpServlet {
     private UserManagerLocal userManager;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userManager.addUser(request.getParameter("username"), request.getParameter("password"), request.getSession());
-//        request.setAttribute("isLogged", userManager.isLogged(request.getSession()));
+        userManager.addUser(request.getParameter("email"), request.getParameter("username"), request.getParameter("password"), request.getSession());
+        request.setAttribute("isLogged", userManager.isLogged(request.getSession()));
         request.getRequestDispatcher("/WEB-INF/pages/LoggedIn.jsp").forward(request, response);
     }
 

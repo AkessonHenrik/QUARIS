@@ -1,8 +1,5 @@
 package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.services.UserManagerLocal;
-
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

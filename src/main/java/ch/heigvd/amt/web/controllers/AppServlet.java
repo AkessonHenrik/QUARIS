@@ -1,6 +1,6 @@
 package ch.heigvd.amt.web.controllers;
 
-import ch.heigvd.amt.services.UserManagerLocal;
+import ch.heigvd.amt.services.dao.UserManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,6 +17,7 @@ public class AppServlet extends HttpServlet {
     private UserManagerLocal userManager;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("isLogged", true);
         request.setAttribute("isLogged", userManager.isLogged(request.getSession()));
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
     }

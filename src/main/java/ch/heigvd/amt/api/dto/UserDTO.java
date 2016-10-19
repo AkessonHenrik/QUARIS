@@ -3,7 +3,7 @@ package ch.heigvd.amt.api.dto;
 import ch.heigvd.amt.models.User;
 
 public class UserDTO {
-    private String username, password;
+    private String email, username, password;
 
     public UserDTO() {
     }
@@ -27,5 +27,9 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

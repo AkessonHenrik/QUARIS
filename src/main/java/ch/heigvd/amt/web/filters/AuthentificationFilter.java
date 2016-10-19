@@ -1,15 +1,22 @@
 package ch.heigvd.amt.web.filters;
 
-import ch.heigvd.amt.services.UserManager;
+import ch.heigvd.amt.services.dao.UserManagerLocal;
 
+import javax.ejb.EJB;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebFilter(filterName = "MagicFilter", urlPatterns = "/*")
+//@Provider
 public class AuthentificationFilter implements Filter {
-    private UserManager userManager = new UserManager();
+    @EJB
+    private UserManagerLocal userManager;
+
+    public AuthentificationFilter() throws SQLException {
+    }
 
     public void destroy() {
     }
@@ -40,6 +47,7 @@ public class AuthentificationFilter implements Filter {
                 return;
             }
         }
+
         chain.doFilter(req, resp);
     }
 
