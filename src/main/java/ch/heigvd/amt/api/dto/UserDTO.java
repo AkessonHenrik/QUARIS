@@ -3,13 +3,14 @@ package ch.heigvd.amt.api.dto;
 import ch.heigvd.amt.models.User;
 
 public class UserDTO {
-    private String email, username, password;
+    private String username, email, password;
 
     public UserDTO() {
     }
 
     public UserDTO(User user) {
         this.username = user.getUsername();
+        this.email = user.getEmail();
         this.password = user.getPassword();
     }
 

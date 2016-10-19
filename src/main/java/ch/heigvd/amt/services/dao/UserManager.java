@@ -154,7 +154,11 @@ public class UserManager implements UserManagerLocal {
         return null;
     }
 
-    // Adds a user to the list
+    /**
+     * Add a new user to the database
+     * @param user
+     * @return If the user was added or not
+     */
     public boolean addUser(User user) {
         boolean result = false;
 
@@ -167,7 +171,7 @@ public class UserManager implements UserManagerLocal {
             pstmt.setString(2, user.getUsername());
             pstmt.setString(3, user.getPassword());
 
-            result = pstmt.executeUpdate() == 1;
+            result = pstmt.executeUpdate() > 0;
 
             conn.close();
         } catch (SQLException e) {
