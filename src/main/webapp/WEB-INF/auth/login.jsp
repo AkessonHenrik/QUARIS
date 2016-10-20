@@ -11,11 +11,12 @@
         </c:if>
         <c:if test="${_message == 'NOT_ALLOWED'}">
             <div class="alert alert-warning" role="alert">
-                You are not allowed to access this page. Please logged in or <a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/register">Register</a>.
+                You are not allowed to access this page.<br>
+                Please log in or <a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/register">Register</a>.
             </div>
         </c:if>
 
-        <form class="form-signin" method="post">
+        <form class="form-signin" action="${pageContext.request.contextPath}/auth/login" method="post">
             <input class="form-control form-control-lg" type="text" name="username" placeholder="Username" required autofocus>
             <input class="form-control form-control-lg" type="password" name="password" placeholder="Password" required>
 

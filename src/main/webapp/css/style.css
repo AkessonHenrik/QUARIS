@@ -76,6 +76,7 @@ a, a:hover {
 
 .bg-faded {
 	background: #fff;
+	border-bottom: 1px solid rgba(0,0,0,.025);
 }
 
 .index-panel {
