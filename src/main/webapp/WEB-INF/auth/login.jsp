@@ -20,7 +20,7 @@
             <input class="form-control form-control-lg" type="password" name="password" placeholder="Password" required>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-            <a class="btn btn-lg btn-outline-secondary btn-block" href="${pageContext.request.contextPath}">Go home</a>
+            <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}">Go home</a>
         </form>
     </div>
 </div>

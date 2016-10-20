@@ -66,7 +66,5 @@ public class UserResource extends APIResource {
         }
 
         return Response.serverError().build();
-
-//        return "{\"status\": \"ok\"}";
     }
 }

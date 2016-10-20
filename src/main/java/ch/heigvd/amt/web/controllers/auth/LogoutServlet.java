@@ -1,8 +1,5 @@
 package ch.heigvd.amt.web.controllers.auth;
 
-import ch.heigvd.amt.services.dao.UserManagerLocal;
-
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +22,6 @@ public class LogoutServlet extends HttpServlet {
         request.getSession().invalidate();
 
         request.setAttribute("_message", "USER_LOGGED_OUT");
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
     }
 }
