@@ -23,61 +23,6 @@ public class UserManager implements UserManagerLocal {
     // Users are kept here
     private static LinkedList<User> users = new LinkedList<>();
 
-    // Checks if the user whose username and password are given is in the registered users list
-    // If so, updates the user's session id
-    // If not, returns false
-    private boolean checkUser(String username, String password, HttpSession sessionId) {
-        for (User u : users) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                u.setSessionId(sessionId);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // Compares the parameter sessionId with all registered user's session id
-    private boolean compareSessions(HttpSession session) {
-        for (User u : users) {
-            try {
-                if (u.getSessionId().equals(session))
-                    return true;
-            } catch (NullPointerException npe) {
-            }
-        }
-        return false;
-    }
-
-
-    // Checks if the parameter session is registered to a user
-    private boolean isLogged(HttpSession session) {
-        if (users.isEmpty())
-            return false;
-        for (User u : users) {
-            try {
-                if (u.getSessionId().equals(session))
-                    return true;
-            } catch (NullPointerException npe) {
-
-            }
-        }
-        return false;
-    }
-
-    // Sets to null the sessionId of the user associated with the parameter sessionId
-    private void logout(HttpSession session) {
-        for (User u : users) {
-            try {
-                if (u.getSessionId().equals(session)) {
-                    u.setSessionId(null);
-                    System.out.println("Logged " + u.getUsername() + " out");
-                }
-            } catch (NullPointerException npe) {
-                System.out.println("Wasn't logged in");
-            }
-        }
-    }
-
     /**
      * Check if the given user exists
      * @param username

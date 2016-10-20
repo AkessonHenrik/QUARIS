@@ -17,15 +17,8 @@ public class LoginServlet extends HttpServlet {
     @EJB
     private UserManagerLocal userManager;
 
-//    private boolean isLogged() {
-//        return request.getSession().getAttribute("username") != null;
-//    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("-----------");
-        System.out.println("-----------");
-
-        if (request.getSession().getAttribute("username") != null) {
+        if (request.getSession().getAttribute("user") != null) {
             request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/WEB-INF/auth/login.jsp").forward(request, response);
@@ -33,7 +26,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get form infos
+        // Get form info
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -46,10 +39,12 @@ public class LoginServlet extends HttpServlet {
         // User does exists or the password correct
         if (user != null && user.getPassword().equals(password)) {
             request.getSession().setAttribute("user", user); // TODO Use UserDTO ?
-            request.setAttribute("isLogged", true);
+
+            request.setAttribute("_message", "USER_LOGGED");
             request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/WEB-INF/pages/InvalidLogin.jsp").forward(request, response);
+            request.setAttribute("_message", "INVALID_LOGIN");
+            request.getRequestDispatcher("/WEB-INF/auth/login.jsp").forward(request, response);
         }
     }
 }
