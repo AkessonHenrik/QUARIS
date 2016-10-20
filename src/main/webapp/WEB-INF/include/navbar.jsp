@@ -11,7 +11,7 @@
         </ul>
     </c:if>
 
-    <form class="form-inline pull-xs-right">
+    <div class="float-xs-right">
         <c:if test='${!isLogged}'>
             <a href="${pageContext.request.contextPath}/auth/login" class="btn btn-outline-primary">Login</a>
             <a href="${pageContext.request.contextPath}/auth/register" class="btn btn-outline-success">Register</a>
@@ -20,5 +20,5 @@
         <c:if test='${isLogged}'>
             <a href="${pageContext.request.contextPath}/auth/logout" class="btn btn-outline-secondary">Log out</a>
         </c:if>
-    </form>
+    </div>
 </nav>

@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("user", user); // TODO Use UserDTO ?
 
             request.setAttribute("_message", "USER_LOGGED");
-            request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
             request.setAttribute("_message", "INVALID_LOGIN");
             request.getRequestDispatcher("/WEB-INF/auth/login.jsp").forward(request, response);

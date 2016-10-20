@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (userManager.addUser(new User(request.getParameter("email"), request.getParameter("username"), request.getParameter("password")))) {
             request.setAttribute("_message", "USER_CREATED");
-            request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/WEB-INF/auth/register.jsp").forward(request, response);
         }

@@ -1,4 +1,4 @@
-<%@include file="../include/head.jsp" %>
+<%@include file="include/head.jsp" %>
 
 <div class="coming-soon full">
     <div class="container">
@@ -35,4 +35,4 @@
     <div class="copyright">A multi-tier application project by Henrik & Fabien</div>
 </div>
 
-<%@include file="../include/footer.jsp" %>
+<%@include file="include/footer.jsp" %>

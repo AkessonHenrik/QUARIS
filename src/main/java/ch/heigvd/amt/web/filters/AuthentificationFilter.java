@@ -1,8 +1,5 @@
 package ch.heigvd.amt.web.filters;
 
-import ch.heigvd.amt.services.dao.UserManagerLocal;
-
-import javax.ejb.EJB;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +12,6 @@ import java.io.IOException;
 })
 //@Provider
 public class AuthentificationFilter implements Filter {
-    @EJB
-    private UserManagerLocal userManager;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,7 +22,7 @@ public class AuthentificationFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
 
-        if (request.getSession().getAttribute("user") != null) {
+        if (request.getSession().getAttribute("user") == null) {
             request.setAttribute("_message", "NOT_ALLOWED");
             request.getRequestDispatcher("WEB-INF/auth/login.jsp").forward(request, resp);
             return;
