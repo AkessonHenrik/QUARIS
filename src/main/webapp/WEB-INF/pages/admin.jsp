@@ -1,6 +1,6 @@
-<%@include file="include/head.jsp" %>
+<%@include file="../include/head.jsp" %>
 
-<%@include file="include/navbar.jsp" %>
+<%@include file="../include/navbar.jsp" %>
 
 <div class="wrapper">
     <div class="container">
@@ -9,9 +9,10 @@
         <div class="content">
             <table id="users-table" class="table table-striped" width="100%" cellspacing="0">
                 <thead>
-                <tr>
-                    <th class="username">Name</th>
-                </tr>
+                    <tr>
+                        <th class="username">Username</th>
+                        <th class="email">Email</th>
+                    </tr>
                 </thead>
             </table>
 
@@ -30,6 +31,7 @@
         serverSide: true,
         columns: [
             { "data": "username" },
+            { "data": "email" }
         ],
         ajax: {
             url: "${pageContext.request.contextPath}/api/users",
@@ -38,4 +40,4 @@
     })
 </script>
 
-<%@include file="include/footer.jsp" %>
+<%@include file="../include/footer.jsp" %>
