@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../include/jsp-config.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +9,8 @@
     <meta name="author" content="">
     <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap4.min.css">
 </head>
 

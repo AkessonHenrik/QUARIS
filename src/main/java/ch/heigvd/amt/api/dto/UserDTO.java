@@ -5,9 +5,6 @@ import ch.heigvd.amt.models.User;
 public class UserDTO {
     private String username, email, password;
 
-    public UserDTO() {
-    }
-
     public UserDTO(User user) {
         this.username = user.getUsername();
         this.email = user.getEmail();

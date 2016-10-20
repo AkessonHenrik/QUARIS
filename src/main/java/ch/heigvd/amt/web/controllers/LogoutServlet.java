@@ -16,14 +16,10 @@ public class LogoutServlet extends HttpServlet {
     @EJB
     private UserManagerLocal userManager;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (userManager.isLogged(request.getSession())) {
-            userManager.logout(request.getSession());
-        }
+//        if (userManager.isLogged(request.getSession())) {
+//            userManager.logout(request.getSession());
+//        }
         request.getRequestDispatcher("").forward(request, response);
     }
 }

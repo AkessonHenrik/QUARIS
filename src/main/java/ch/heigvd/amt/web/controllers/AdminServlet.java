@@ -7,15 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ProtectedServlet", urlPatterns = {"/protected"})
-public class ProtectedServlet extends HttpServlet {
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
+@WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
+public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("isLogged", true);
-        request.getRequestDispatcher("/WEB-INF/pages/ProtectedPage.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/admin.jsp").forward(request, response);
     }
 }

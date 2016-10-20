@@ -26,7 +26,7 @@ public class UserManager implements UserManagerLocal {
     // Checks if the user whose username and password are given is in the registered users list
     // If so, updates the user's session id
     // If not, returns false
-    public boolean checkUser(String username, String password, HttpSession sessionId) {
+    private boolean checkUser(String username, String password, HttpSession sessionId) {
         for (User u : users) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 u.setSessionId(sessionId);
@@ -37,7 +37,7 @@ public class UserManager implements UserManagerLocal {
     }
 
     // Compares the parameter sessionId with all registered user's session id
-    public boolean compareSessions(HttpSession session) {
+    private boolean compareSessions(HttpSession session) {
         for (User u : users) {
             try {
                 if (u.getSessionId().equals(session))
@@ -50,7 +50,7 @@ public class UserManager implements UserManagerLocal {
 
 
     // Checks if the parameter session is registered to a user
-    public boolean isLogged(HttpSession session) {
+    private boolean isLogged(HttpSession session) {
         if (users.isEmpty())
             return false;
         for (User u : users) {
@@ -65,7 +65,7 @@ public class UserManager implements UserManagerLocal {
     }
 
     // Sets to null the sessionId of the user associated with the parameter sessionId
-    public void logout(HttpSession session) {
+    private void logout(HttpSession session) {
         for (User u : users) {
             try {
                 if (u.getSessionId().equals(session)) {
