@@ -1,41 +1,44 @@
 package ch.heigvd.amt.models;
 
-import javax.servlet.http.HttpSession;
-
 public class User {
     private String username, email, password;
-    private HttpSession sessionId;
 
-    public User(String email, String username, String password, HttpSession sessionId) {
+    public User(String email, String username, String password) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.sessionId = sessionId;
     }
 
+    /**
+     * Get username
+     * @return Username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Get password // TODO - Secure that
+     * @return Password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Get email
+     * @return Email
+     */
     public String getEmail() {
         return email;
     }
 
-    public HttpSession getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(HttpSession sessionId) {
-        this.sessionId = sessionId;
-    }
-
     @Override
+    /**
+     * Show user info
+     */
     public String toString() {
-        return "User{username: " + username + ", password: " + password + "}";
+        return "User{username: " + username + ", email: " + email + "}";
     }
 
 }

@@ -65,7 +65,7 @@ public class UserManager implements UserManagerLocal {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                users.add(new User(rs.getString("email"), rs.getString("username"), rs.getString("password"), null));
+                users.add(new User(rs.getString("email"), rs.getString("username"), rs.getString("password")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class UserManager implements UserManagerLocal {
                 String password = rs.getString("password");
                 String username2 = rs.getString("username");
 
-                return new User(username2, email, password, null);
+                return new User(username2, email, password);
             }
 
             conn.close();

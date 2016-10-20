@@ -17,6 +17,13 @@ public class LoginServlet extends HttpServlet {
     @EJB
     private UserManagerLocal userManager;
 
+    /**
+     * Show the login form
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
             request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
@@ -25,6 +32,13 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Handle a login request to log a user
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get form info
         String username = request.getParameter("username");

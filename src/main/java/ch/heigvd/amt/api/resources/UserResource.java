@@ -61,7 +61,7 @@ public class UserResource extends APIResource {
     public Response addUser(
             UserDTO user
     ) {
-        if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword(), null))) {
+        if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword()))) {
             return Response.ok(user).status(Response.Status.CREATED).build();
         }
 
