@@ -7,7 +7,7 @@
             <label for="inputUsername" class="sr-only">Username</label>
             <input name="username" id="inputUsername" class="form-control form-control-lg" placeholder="Username" required autofocus>
 
-            <label for="inputEmail" class="sr-only">Username</label>
+            <label for="inputEmail" class="sr-only">Email</label>
             <input type="email" name="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email" required>
 
             <label for="inputPassword" class="sr-only">Password</label>

@@ -31,7 +31,7 @@ public class UserResource extends APIResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(
+    public Response getUsers(
     ) {
         try {
             return Response.ok(userManager.getAll().stream().map(u -> new UserDTO(u)).toArray()).build();
