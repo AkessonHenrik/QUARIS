@@ -3,6 +3,7 @@ package ch.heigvd.amt.api.resources;
 import ch.heigvd.amt.api.dto.UserDTO;
 import ch.heigvd.amt.models.User;
 import ch.heigvd.amt.services.dao.UserManagerLocal;
+import ch.heigvd.amt.utils.PATCH;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -63,6 +64,39 @@ public class UserResource extends APIResource {
     ) {
         if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword()))) {
             return Response.ok(user).status(Response.Status.CREATED).build();
+        }
+
+        return Response.serverError().build();
+    }
+
+    @PATCH
+    @Path("/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response patchRow(
+            @PathParam("username") final String username,
+            final UserDTO user
+    ) {
+        if (!userManager.exists(username)) {
+            // User does not exists
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        User oldUser = userManager.getUserByUsername(username);
+
+        if (user.getUsername() != null) {
+            oldUser.setUsername(user.getUsername());
+        }
+
+        if (user.getEmail() != null) {
+            oldUser.setEmail(user.getEmail());
+        }
+
+        if (user.getPassword() != null) {
+            oldUser.setPassword(user.getPassword());
+        }
+
+        if (userManager.updateByUsername(username, oldUser)) {
+            return Response.ok().build(); // CHECK
         }
 
         return Response.serverError().build();

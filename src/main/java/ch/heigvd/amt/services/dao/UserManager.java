@@ -127,6 +127,34 @@ public class UserManager implements UserManagerLocal {
     }
 
     /**
+     * Add a new user to the database
+     * @param user
+     * @return If the user was added or not
+     */
+    public boolean updateByUsername(final String username, User user) {
+        boolean result = false;
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(
+                    "UPDATE users SET email = ?, username = ?, password = ? WHERE username = ?");
+
+            pstmt.setString(1, user.getEmail());
+            pstmt.setString(2, user.getUsername());
+            pstmt.setString(3, user.getPassword());
+            pstmt.setString(4, username);
+
+            result = pstmt.executeUpdate() > 0;
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    /**
      * Delete a specific user
      * @param username
      * @return

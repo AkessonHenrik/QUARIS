@@ -5,7 +5,10 @@ import ch.heigvd.amt.models.User;
 public class UserDTO {
     private String username, email, password;
 
-    public UserDTO(User user) {
+    public UserDTO() {
+    }
+
+    public UserDTO(final User user) {
         this.username = user.getUsername();
         this.email = user.getEmail();
         this.password = user.getPassword();
@@ -15,7 +18,7 @@ public class UserDTO {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -23,7 +26,7 @@ public class UserDTO {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 

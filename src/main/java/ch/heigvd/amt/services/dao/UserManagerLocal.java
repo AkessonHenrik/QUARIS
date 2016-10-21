@@ -18,4 +18,6 @@ public interface UserManagerLocal {
     List<User> getAll() throws SQLException;
 
     boolean deleteByUsername(String username);
+
+    boolean updateByUsername(String username, User oldUser);
 }

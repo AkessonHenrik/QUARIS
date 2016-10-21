@@ -33,6 +33,18 @@ public class User {
         return email;
     }
 
+    public void setUsername(final String username) {
+        this.username = username;
+    }
+
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
     @Override
     /**
      * Show user info
