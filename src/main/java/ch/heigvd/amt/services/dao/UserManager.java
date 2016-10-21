@@ -125,4 +125,29 @@ public class UserManager implements UserManagerLocal {
 
         return result;
     }
+
+    /**
+     * Delete a specific user
+     * @param username
+     * @return
+     */
+    public boolean deleteByUsername(final String username) {
+        boolean result = false;
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM users WHERE username = ?");
+            pstmt.setString(1, username);
+
+            result = pstmt.executeUpdate() > 0;
+
+            conn.close();
+
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

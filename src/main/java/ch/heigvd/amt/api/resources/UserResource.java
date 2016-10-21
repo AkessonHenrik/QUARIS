@@ -46,7 +46,7 @@ public class UserResource extends APIResource {
     @Path("/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUser(
-            @PathParam(value="username") String username
+            @PathParam(value="username") final String username
     ) {
         if (userManager.exists(username)) {
             return Response.ok(new UserDTO(userManager.getUserByUsername(username))).build();
@@ -59,12 +59,31 @@ public class UserResource extends APIResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(
-            UserDTO user
+            final UserDTO user
     ) {
         if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword()))) {
             return Response.ok(user).status(Response.Status.CREATED).build();
         }
 
         return Response.serverError().build();
+    }
+
+    @DELETE
+    @Path("/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(
+            @PathParam(value="username") final String username
+    ) {
+        if (userManager.exists(username)) {
+            if (userManager.deleteByUsername(username)) {
+                return Response.ok().build();
+            }
+
+            // User cannot be deleted
+            return Response.serverError().build();
+        }
+
+        // User does not exists
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 }

@@ -9,12 +9,6 @@ import java.util.List;
 
 @Local
 public interface UserManagerLocal {
-//    boolean checkUser(String username, String password, HttpSession session);
-
-//    boolean isLogged(HttpSession session);
-
-//    void logout(HttpSession session);
-
     boolean addUser(User user);
 
     User getUserByUsername(String username);
@@ -23,5 +17,5 @@ public interface UserManagerLocal {
 
     List<User> getAll() throws SQLException;
 
-//    boolean compareSessions(HttpSession session);
+    boolean deleteByUsername(String username);
 }
