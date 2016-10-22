@@ -1,6 +1,7 @@
 package ch.heigvd.amt.services.dao;
 
 import ch.heigvd.amt.models.User;
+import ch.heigvd.amt.utils.BytesUtil;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
@@ -85,10 +86,10 @@ public class UserManager implements UserManagerLocal {
 
             if (rs.next()) {
                 String email = rs.getString("email");
-                String password = rs.getString("password");
                 String username2 = rs.getString("username");
+                String hashedPassword = rs.getString("password");
 
-                return new User(username2, email, password);
+                return new User(email, username2, hashedPassword, true);
             }
 
             conn.close();

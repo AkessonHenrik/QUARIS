@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
         User user = userManager.getUserByUsername(username);
 
         // User does exists or the password correct
-        if (user != null && user.getPassword().equals(password)) {
+        if (user != null && user.testPassword(password)) {
             request.getSession().setAttribute("user", user); // TODO Use UserDTO ?
 
             request.setAttribute("_message", "USER_LOGGED");
