@@ -1,0 +1,143 @@
+swagger: '2.0'
+info:
+  title: Quaris API
+  description: |
+    **The complete API documentation to use with Quaris**
+
+    The code source is available [here](https://github.com/AkessonHenrik/QUARIS).
+  version: 0.1.0
+basePath: /api
+# the domain of the service
+# array of all schemes that your API supports
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: Get all users
+      description: |
+        The Users endpoint returns information about the Users stored in the database. The response includes the users' email, username.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: An array of Users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        500:
+          description: Unexpected error
+    post:
+      summary: Create a new user
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: body
+          description: User to add to the database
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        201:
+          description: The user was successfully created
+        400:
+          description: Invalid field was given
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Server error, user could not be created
+
+  /users/{username}:
+    get:
+      summary: Get a unique user
+      parameters:
+        - name: username
+          in: path
+          description: A specific User's username
+          required: true
+          type: string
+      produces:
+        - application/json
+      tags:
+        - Users
+      responses:
+        200:
+          description: A User object
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/User'
+        404:
+          description: User not found
+          schema:
+            $ref: '#/definitions/Error'
+
+    patch:
+      summary: Patch the given user
+      description: The given user can be partialy patch, each field can be passed separatly.
+      parameters:
+        - name: username
+          in: path
+          description: A specific User's username
+          required: true
+          type: string
+      produces:
+        - application/json
+      tags:
+        - Users
+      responses:
+        200:
+          description: A User object
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/User'
+        404:
+          description: User not found
+        500:
+          description: Server error
+
+    delete:
+      summary: Remove a user
+      parameters:
+        - name: username
+          in: path
+          description: Remove a specific User
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        200:
+          description: User removed
+        404:
+          description: User not found
+        500:
+          description: Server error
+
+definitions:
+  User:
+    type: object
+    properties:
+      username:
+        type: string
+        description: Username as chosen by the user during registration.
+      email:
+        type: string
+        description: The user's email address.
+      password:
+        type: string
+        description: The user's password
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
