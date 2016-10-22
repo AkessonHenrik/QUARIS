@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id INTEGER NOT NULL AUTO_INCREMENT,
   email VARCHAR(64) NOT NULL,
-  username VARCHAR(255),
+  username VARCHAR(32),
   password VARCHAR(512) NOT NULL,
   PRIMARY KEY (id)
 );

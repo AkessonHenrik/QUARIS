@@ -1,9 +1,12 @@
 package ch.heigvd.amt.api.resources;
 
+import ch.heigvd.amt.api.dto.ErrorDTO;
 import ch.heigvd.amt.api.dto.UserDTO;
 import ch.heigvd.amt.models.User;
 import ch.heigvd.amt.services.dao.UserManagerLocal;
 import ch.heigvd.amt.utils.PATCH;
+import ch.heigvd.amt.utils.helpers.ResponseHelper;
+import ch.heigvd.amt.utils.validations.UserValidation;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -62,8 +65,29 @@ public class UserResource extends APIResource {
     public Response addUser(
             final UserDTO user
     ) {
+        if (!UserValidation.username(user.getUsername())) {
+            return ResponseHelper.send(
+                    Response.Status.BAD_REQUEST,
+                    new ErrorDTO("INVALID_USERNAME", "Username must be more than 6 characters")
+            );
+        }
+
+        if (!UserValidation.password(user.getPassword())) {
+            return ResponseHelper.send(
+                    Response.Status.BAD_REQUEST,
+                    new ErrorDTO("INVALID_PASSWORD")
+            );
+        }
+
+        if (!UserValidation.email(user.getEmail())) {
+            return ResponseHelper.send(
+                    Response.Status.BAD_REQUEST,
+                    new ErrorDTO("INVALID_EMAIL")
+            );
+        }
+
         if (userManager.addUser(new User(user.getEmail(), user.getUsername(), user.getPassword()))) {
-            return Response.ok(user).status(Response.Status.CREATED).build();
+            return ResponseHelper.send(Response.Status.CREATED, user);
         }
 
         return Response.serverError().build();
