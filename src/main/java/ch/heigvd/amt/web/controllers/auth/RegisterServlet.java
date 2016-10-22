@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = {"auth/register"})
@@ -67,6 +66,7 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("_message", "USER_CREATED");
             request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
+            request.setAttribute("_message", "USERNAME_ALREADY_EXISTS");
             request.getRequestDispatcher("/WEB-INF/auth/register.jsp").forward(request, response);
         }
     }

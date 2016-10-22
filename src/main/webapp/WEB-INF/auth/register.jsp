@@ -21,6 +21,11 @@
                         Your password is too short. Please use at least 6 characters.
                     </div>
                 </c:if>
+                <c:if test="${_message == 'USERNAME_ALREADY_EXISTS'}">
+                    <div class="alert alert-warning" role="alert">
+                        Username already exists. Please try an other one.
+                    </div>
+                </c:if>
 
                 <form class="form-signin" method="post">
                     <label for="inputUsername" class="sr-only">Username</label>

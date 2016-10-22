@@ -19,6 +19,7 @@ CREATE TABLE users (
   email VARCHAR(64) NOT NULL,
   username VARCHAR(32),
   password VARCHAR(512) NOT NULL,
+  UNIQUE (username),
   PRIMARY KEY (id)
 );
 

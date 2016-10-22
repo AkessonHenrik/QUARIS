@@ -119,6 +119,8 @@ public class UserManager implements UserManagerLocal {
             result = pstmt.executeUpdate() > 0;
 
             conn.close();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
