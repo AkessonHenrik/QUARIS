@@ -5,6 +5,23 @@
         <div class="wrapper">
             <div class="container">
                 <h1 class="title">Register</h1>
+
+                <c:if test="${_message == 'INVALID_USERNAME'}">
+                    <div class="alert alert-warning" role="alert">
+                        Your username is invalid. The length must be less than 32 characters.
+                    </div>
+                </c:if>
+                <c:if test="${_message == 'INVALID_EMAIL'}">
+                    <div class="alert alert-warning" role="alert">
+                        Your email is invalid. It must be a valid email and the length must be less than 64 characters.
+                    </div>
+                </c:if>
+                <c:if test="${_message == 'INVALID_PASSWORD'}">
+                    <div class="alert alert-warning" role="alert">
+                        Your password is too short. Please use at least 6 characters.
+                    </div>
+                </c:if>
+
                 <form class="form-signin" method="post">
                     <label for="inputUsername" class="sr-only">Username</label>
                     <input name="username" id="inputUsername" class="form-control form-control-lg" placeholder="Username" required autofocus>

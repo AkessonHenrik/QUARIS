@@ -2,6 +2,7 @@ package ch.heigvd.amt.web.controllers.auth;
 
 import ch.heigvd.amt.models.User;
 import ch.heigvd.amt.services.dao.UserManagerLocal;
+import ch.heigvd.amt.utils.validations.UserValidation;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,12 +11,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = {"auth/register"})
 public class RegisterServlet extends HttpServlet {
 
     @EJB
     private UserManagerLocal userManager;
+
+    // http://stackoverflow.com/a/8204716/1066915
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     /**
      * Show the register form
@@ -36,7 +43,27 @@ public class RegisterServlet extends HttpServlet {
      * @throws IOException
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (userManager.addUser(new User(request.getParameter("email"), request.getParameter("username"), request.getParameter("password")))) {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        boolean validation = true;
+
+        if (!UserValidation.username(username)) {
+            validation = false;
+            request.setAttribute("_message", "INVALID_USERNAME");
+        }
+
+        if (!UserValidation.password(password)) {
+            validation = false;
+            request.setAttribute("_message", "INVALID_PASSWORD");
+        }
+
+        if (!UserValidation.email(email)) {
+            validation = false;
+            request.setAttribute("_message", "INVALID_EMAIL");
+        }
+
+        if (validation && userManager.addUser(new User(email, username, password))) {
             request.setAttribute("_message", "USER_CREATED");
             request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {

@@ -34,8 +34,8 @@ public class UserManager implements UserManagerLocal {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // If COUNT is "1", user exists
-                return rs.getString("res").equals("1");
+                // If COUNT is "1" or more, user exists
+                return !rs.getString("res").equals("0");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,6 +69,11 @@ public class UserManager implements UserManagerLocal {
         return users;
     }
 
+    /**
+     * Get a specific user from his username
+     * @param username
+     * @return
+     */
     public User getUserByUsername(String username) {
         try {
             Connection conn = dataSource.getConnection();
