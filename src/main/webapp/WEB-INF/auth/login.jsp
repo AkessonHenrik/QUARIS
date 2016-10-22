@@ -8,13 +8,13 @@
 
                 <c:if test="${_message == 'INVALID_LOGIN'}">
                     <div class="alert alert-warning" role="alert">
-                        It appears you aren't registered. Please <a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/register">Register here</a>.
+                        It appears you aren't registered. Please <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/auth/register">Register here</a>.
                     </div>
                 </c:if>
                 <c:if test="${_message == 'NOT_ALLOWED'}">
                     <div class="alert alert-warning" role="alert">
                         You are not allowed to access this page.<br>
-                        Please log in or <a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/register">Register</a>.
+                        Please log in or <a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/auth/register">Register</a>.
                     </div>
                 </c:if>
 

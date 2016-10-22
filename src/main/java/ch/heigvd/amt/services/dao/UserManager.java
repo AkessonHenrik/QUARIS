@@ -1,15 +1,12 @@
 package ch.heigvd.amt.services.dao;
 
 import ch.heigvd.amt.models.User;
-import ch.heigvd.amt.utils.BytesUtil;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 // Stores all users
@@ -20,9 +17,6 @@ public class UserManager implements UserManagerLocal {
     private DataSource dataSource;
 
     protected Connection connection;
-
-    // Users are kept here
-    private static LinkedList<User> users = new LinkedList<>();
 
     /**
      * Check if the given user exists

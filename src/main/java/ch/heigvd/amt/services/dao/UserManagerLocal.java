@@ -3,7 +3,6 @@ package ch.heigvd.amt.services.dao;
 import ch.heigvd.amt.models.User;
 
 import javax.ejb.Local;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
