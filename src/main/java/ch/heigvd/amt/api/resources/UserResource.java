@@ -1,3 +1,7 @@
+/**
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.api.resources;
 
 import ch.heigvd.amt.api.dto.ErrorDTO;

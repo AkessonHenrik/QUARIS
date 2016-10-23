@@ -1,3 +1,9 @@
+/**
+ * Servlet associated to the login.
+ *
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.web.controllers.auth;
 
 import ch.heigvd.amt.models.User;

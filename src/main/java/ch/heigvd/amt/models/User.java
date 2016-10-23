@@ -1,3 +1,7 @@
+/**
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.models;
 
 import com.lambdaworks.crypto.SCryptUtil;

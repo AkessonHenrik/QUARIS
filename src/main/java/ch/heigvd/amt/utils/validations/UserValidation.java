@@ -1,3 +1,7 @@
+/**
+ * @author Fabien Salathe
+ * @author Henrik Akesson
+ */
 package ch.heigvd.amt.utils.validations;
 
 import java.util.regex.Matcher;

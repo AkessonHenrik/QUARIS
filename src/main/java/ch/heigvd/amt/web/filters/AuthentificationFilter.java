@@ -1,3 +1,11 @@
+
+/**
+ * Implementation of the authentication filter.
+ * The web app visitor cannot access the administration page without being authenticated first.
+ *
+ * @author  Fabien Salathe
+ * @author  Henrik Akesson
+ */
 package ch.heigvd.amt.web.filters;
 
 import javax.servlet.*;
@@ -18,6 +26,15 @@ public class AuthentificationFilter implements Filter {
 
     }
 
+    /**
+     * Filters the website requests on whether the visitor is authenticated or not.
+     *
+     * @param req The request sent from the web page
+     * @param resp
+     * @param chain The request is sent through the rest of the filter chain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;

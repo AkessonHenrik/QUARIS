@@ -1,3 +1,9 @@
+/**
+ * Servlet associated to the administration page
+ *
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.web.controllers;
 
 import javax.servlet.ServletException;

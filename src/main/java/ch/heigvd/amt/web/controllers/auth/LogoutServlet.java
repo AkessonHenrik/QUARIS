@@ -1,3 +1,8 @@
+/**
+ * Servlet associated to the user logging out
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.web.controllers.auth;
 
 import javax.servlet.ServletException;

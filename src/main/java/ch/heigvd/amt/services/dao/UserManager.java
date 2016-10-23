@@ -1,3 +1,7 @@
+/**
+ * @author Henrik Akesson
+ * @author Fabien Salathe
+ */
 package ch.heigvd.amt.services.dao;
 
 import ch.heigvd.amt.models.User;
