@@ -12,8 +12,8 @@
         <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap4.min.js"></script>
 
         <script>
-            $(document).ready(function() {
-                var usersTable = jQuery('#users-table').DataTable({
+            jQuery(document).ready(function() {
+                var usersTable = $('#users-table').DataTable({
                     columns: [
                         { data: 'username' },
                         { data: 'email' },
@@ -54,7 +54,7 @@
                             Create a new user
                         </button>
                     </div>
-                    <table id="users-table" class="table table-striped">
+                    <table id="users-table" class="table table-striped" cellspacing="0">
                         <thead>
                             <tr>
                                 <th class="username">Username</th>
