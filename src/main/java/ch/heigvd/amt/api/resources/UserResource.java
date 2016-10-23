@@ -99,6 +99,7 @@ public class UserResource extends APIResource {
 
     @PATCH
     @Path("/{username}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response patchRow(
             @PathParam("username") final String username,
@@ -107,6 +108,10 @@ public class UserResource extends APIResource {
         if (!userManager.exists(username)) {
             // User does not exists
             return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        if (user.getUsername() != null && userManager.exists(user.getUsername())) {
+            return Response.status(Response.Status.CONFLICT).build();
         }
 
         User oldUser = userManager.getUserByUsername(username);

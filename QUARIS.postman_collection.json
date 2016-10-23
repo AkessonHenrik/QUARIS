@@ -1,111 +1,132 @@
 {
-  "variables": [],
-  "info": {
-    "name": "QUARIS",
-    "_postman_id": "{postman_id}",
-    "description": "",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users",
-      "request": {
-        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/",
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
-        },
-        "description": ""
-      },
-      "response": []
-    },
-    {
-      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users",
-      "request": {
-        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
-        },
-        "description": "[POST] create a new user"
-      },
-      "response": []
-    },
-    {
-      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
-      "request": {
-        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
-        },
-        "description": "[GET] Get a specific user (specify username instead of {username})"
-      },
-      "response": []
-    },
-    {
-      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
-      "request": {
-        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/test",
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"username\":\"newTest\",\n\t\"email\":\"test2@test.test\",\n\t\"password\":\"test\"\n}"
-        },
-        "description": "[PATCH] Get a specific user (specify username instead of {username})\nIn body:\n{\n\t\"username\":\"{new username}\",\n\t\"email\":\"{new email}\",\n\t\"password\":\"{new password}\"\n}\n"
-      },
-      "response": []
-    },
-    {
-      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
-      "request": {
-        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/newTest",
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "description": "[DELETE] Get a specific user (specify username instead of {username})"
-      },
-      "response": []
-    }
-  ]
+	"variables": [],
+	"info": {
+		"name": "Quaris API",
+		"_postman_id": "789a995f-7776-1ee9-d6bf-fabd7fc8059e",
+		"description": "**The complete API documentation to use with Quaris**\n\nThe code source is available [here](https://github.com/AkessonHenrik/QUARIS).\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"description": "Folder for users",
+			"item": [
+				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n"
+							}
+						}
+					],
+					"request": {
+						"url": "{{host}}:{{port}}{{base}}/api/users",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "The Users endpoint returns information about the Users stored in the database. The response includes the users' email, username.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Successful POST request\"] = responseCode.code === 201;"
+							}
+						}
+					],
+					"request": {
+						"url": "{{host}}:{{port}}{{base}}/api/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a unique user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Your test email\"] = jsonData.email === \"test@test.test\";\ntests[\"Your test password\"] = jsonData.password.length > 60;"
+							}
+						}
+					],
+					"request": {
+						"url": "{{host}}:{{port}}{{base}}/api/users/test",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Patch the given user",
+					"request": {
+						"url": "{{host}}:{{port}}{{base}}/api/users/test",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"newTest\",\n\t\"email\":\"test2@test.test\",\n\t\"password\":\"test\"\n}"
+						},
+						"description": "The given user can be partialy patch, each field can be passed separatly."
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a user",
+					"request": {
+						"url": "{{host}}:{{port}}{{base}}/api/users/test",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }
