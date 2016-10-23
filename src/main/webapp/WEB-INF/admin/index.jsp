@@ -12,28 +12,31 @@
         <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap4.min.js"></script>
 
         <script>
-            var usersTable = jQuery('#users-table').DataTable({
-                columns: [
-                    { "data": "username" },
-                    { "data": "email" }
-                ],
-                ajax: {
-                    url: "${pageContext.request.contextPath}/api/users",
-                    dataSrc: ""
-                }
-            })
+            $(document).ready(function() {
+                var usersTable = jQuery('#users-table').DataTable({
+                    columns: [
+                        { data: 'username' },
+                        { data: 'email' },
+                    ],
+                    ajax: {
+                        url: '${pageContext.request.contextPath}/api/users',
+                        dataSrc: ''
+                    }
+                })
 
-            $(".create-new-user").on("click", function () {
-                var user = {
-                    username: $("[name=username]").val(),
-                    email: $("[name=email]").val(),
-                    password: $("[name=password]").val()
-                }
+                // Create a new user (ajax)
+                $(".create-new-user").on("click", function () {
+                    var user = {
+                        username: $("[name=username]").val(),
+                        email: $("[name=email]").val(),
+                        password: $("[name=password]").val()
+                    }
 
-                $.post("${pageContext.request.contextPath}/auth/register", user)
-                        .done(function () {
-                            usersTable.ajax.reload();
-                        })
+                    $.post("${pageContext.request.contextPath}/auth/register", user)
+                            .done(function () {
+                                usersTable.ajax.reload();
+                            })
+                })
             })
         </script>
     </jsp:attribute>
@@ -46,10 +49,12 @@
                 <h1>Users</h1>
 
                 <div class="content">
-                    <button type="button" class="btn btn-primary float-xs-right clearfix m-b-1" data-toggle="modal" data-target="#new-user-modal">
-                        Create a new user
-                    </button>
-                    <table id="users-table" class="table table-striped" width="100%" cellspacing="0">
+                    <div class="clearfix mb-1">
+                        <button type="button" class="btn btn-primary float-xs-right" data-toggle="modal" data-target="#new-user-modal">
+                            Create a new user
+                        </button>
+                    </div>
+                    <table id="users-table" class="table table-striped">
                         <thead>
                             <tr>
                                 <th class="username">Username</th>
