@@ -789,7 +789,7 @@ margin-bottom: 20px;
 
                     <hr>
 
-                    <p>**The complete API documentation to use with Quaris**  The code source is available [here](https://github.com/AkessonHenrik/QUARIS). </p>
+                    <p><b>The complete API documentation to use with Quaris</b>  The code source is available <a href="https://github.com/AkessonHenrik/QUARIS)">here</a>. </p>
                 </div>
             </div>
             <div id="sections">
@@ -3141,6 +3141,82 @@ try {
 
 
 
+                                                <h3> Status: 409 - Conflict, an other user already have this username </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Users-usersUsernamePatch-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Users-usersUsernamePatch-schema">
+
+
+
+
+                                                        <div id='examples-Users-usersUsernamePatch-schema-409' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "Conflict, an other user already have this username"
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Users-usersUsernamePatch-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Users-usersUsernamePatch-schema-409');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Users-usersUsernamePatch-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
                                                 <h3> Status: 500 - Server error </h3>
 
                                                 <ul class="nav nav-tabs nav-tabs-examples" >
@@ -3254,7 +3330,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2016-10-22T14:57:48.931Z
+                    Generated 2016-10-23T19:33:40.318Z
                 </div>
             </div>
         </div>
