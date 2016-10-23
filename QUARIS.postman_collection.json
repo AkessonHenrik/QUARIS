@@ -1,0 +1,111 @@
+{
+  "variables": [],
+  "info": {
+    "name": "QUARIS",
+    "_postman_id": "{postman_id}",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users",
+      "request": {
+        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users",
+      "request": {
+        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
+        },
+        "description": "[POST] create a new user"
+      },
+      "response": []
+    },
+    {
+      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
+      "request": {
+        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"username\":\"test\",\n\t\"email\":\"test@test.test\",\n\t\"password\":\"test\"\n}"
+        },
+        "description": "[GET] Get a specific user (specify username instead of {username})"
+      },
+      "response": []
+    },
+    {
+      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
+      "request": {
+        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/test",
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"username\":\"newTest\",\n\t\"email\":\"test2@test.test\",\n\t\"password\":\"test\"\n}"
+        },
+        "description": "[PATCH] Get a specific user (specify username instead of {username})\nIn body:\n{\n\t\"username\":\"{new username}\",\n\t\"email\":\"{new email}\",\n\t\"password\":\"{new password}\"\n}\n"
+      },
+      "response": []
+    },
+    {
+      "name": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/{username}",
+      "request": {
+        "url": "{ip_addr}:{port}/QUARIS-1.0-SNAPSHOT/api/users/newTest",
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "description": "[DELETE] Get a specific user (specify username instead of {username})"
+      },
+      "response": []
+    }
+  ]
+}

@@ -23,7 +23,7 @@
                 </c:if>
                 <c:if test="${_message == 'USERNAME_ALREADY_EXISTS'}">
                     <div class="alert alert-warning" role="alert">
-                        Username already exists. Please try an other one.
+                        Username already exists. Please try another one.
                     </div>
                 </c:if>
 

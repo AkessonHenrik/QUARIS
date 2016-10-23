@@ -49,7 +49,7 @@
                     <button type="button" class="btn btn-primary float-xs-right clearfix" data-toggle="modal" data-target="#new-user-modal">
                         Create a new user
                     </button>
-
+                    <br><br>
                     <table id="users-table" class="table table-striped" width="100%" cellspacing="0">
                         <thead>
                             <tr>

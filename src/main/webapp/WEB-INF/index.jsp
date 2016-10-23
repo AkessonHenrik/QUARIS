@@ -9,7 +9,7 @@
                 <div class="index-panel">
                     <c:if test="${_message == 'USER_CREATED'}">
                         <div class="alert alert-info" role="alert">
-                            User created, you can now logged in.
+                            User created, you can now log in.
                         </div>
                     </c:if>
                     <c:if test="${_message == 'USER_LOGGED'}">
