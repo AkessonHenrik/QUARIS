@@ -2,19 +2,25 @@
 
 ## A multi-tier application project by Henrik Akesson & Fabien Salathe
 
-### Protected content
-A page is made available only for registered and logged in visitors. That page is the **administration** page, where the databse content is shown and a user can create new ones.
+# Context
+This repo contains the code to run a gamification API. It is a project proposed by [Olivier Liechti](https://github.com/wasadigi) in the context of our [AMT lesson](https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AMT-Lectures) at HEIG-VD.
 
-### How to launch
-Run the command `docker-compose up --build` in the main directory, "**QUARIS**", The one where the *docker-compose.yml* file is.
+# How to
 
-Once the docker image is up and running, go to the following address: [{localhost/192.168.99.100}:9090/QUARIS-1.0-SNAPSHOT](http://localhost:8080/QUARIS-1.0-SNAPSHOT)
+## Setup
+Before getting started you'll need to download and install [IntelliJ IDEA](https://www.jetbrains.com/idea/#chooseYourEdition) and  [MySql Server](https://dev.mysql.com/downloads/windows/installer/5.7.html).
 
-### Wildfly Admin dashboard
-Go to [{localhost/192.168.99.100}:9990}
+## Run the app
+Then, after cloning this repo, open it IntelliJ IDE run the project by clicking on the run/debug command. IntelliJ will build and run the Spring Server that will run the database and run the app.
 
+- Clone this repository
+- Open the projet in your IntelliJ IDE
+- Edit the application.properties file, by adding the password of you Root account of MySql Server
+- Click on the Run/Update button
+- Open your browser and access the url `http://localhost:8090/`
+- And magic happens.
 
-### API documentation
+## API documentation
 Check it out here: https://akessonhenrik.github.io/QUARIS/api/
 
 ### PostMan tests info
